@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul  http://www.zkoss.org/2005/zul/zul.xsd">
+
+    <window viewModel="@id('vm') @init('org.example.showTopKinopoisk.web.TopKinopoiskVM')"
+           contentStyle="overflow: auto">
+            <div align="center" >
+                <label value="Рейтинг кинопоиска" style="font-size: 25pt"/>
+                <separator height="25px"/>
+                <hbox>
+                    <vbox>
+                        <separator height="4px"/>
+                        <label value="Укажите дату"/>
+                    </vbox>
+                    <textbox value="@bind(vm.date)" placeholder="01.01.2020"/>
+                    <button label="Найти" onClick="@command('findFilms')"/>
+                </hbox>
+                <separator height="10px"/>
+                <label value="@load(vm.error)" style="color: red" visible="@load(!vm.error.isEmpty())"/>
+            </div>
+            <separator height="20px"/>
+            <listbox model="@load(vm.films)" zclass="z-listbox-body">
+                <listhead>
+                    <listheader label="Позиция" hflex="1"/>
+                    <listheader label="Название" hflex="5"/>
+                    <listheader label="Год выхода" hflex="2"/>
+                    <listheader label="Рейтинг" hflex="1"/>
+                    <listheader label="Количество голосов" hflex="2"/>
+                    <listheader label="Дата рейтинга" hflex="2"/>
+                </listhead>
+                <template name="model" var="film" >
+                    <listitem>
+                        <listcell label="@load(film.position)"/>
+                        <listcell label="@load(film.name)"/>
+                        <listcell label="@load(film.year)"/>
+                        <listcell label="@load(film.rating)"/>
+                        <listcell label="@load(film.numberOfVotes)"/>
+                        <listcell label="@load(film.formattedInstant)"/>
+                    </listitem>
+                </template>
+            </listbox>
+    </window>
+</zk>

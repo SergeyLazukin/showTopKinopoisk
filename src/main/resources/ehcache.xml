@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         updateCheck="false"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToLiveSeconds="15"
+            overflowToDisk="false"
+            memoryStoreEvictionPolicy="LRU" />
+
+    <cache name="film"
+           maxEntriesLocalHeap="10000"
+           eternal="false"
+           overflowToDisk="false"
+           timeToLiveSeconds="3600"
+           memoryStoreEvictionPolicy="LRU"/>
+
+    <cache name="org.hibernate.cache.internal.StandardQueryCache"
+           maxElementsInMemory="10000"
+           eternal="false"
+           timeToLiveSeconds="60"
+           overflowToDisk="false"
+           memoryStoreEvictionPolicy="LRU" />
+
+</ehcache>
